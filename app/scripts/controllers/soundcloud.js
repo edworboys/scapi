@@ -19,10 +19,31 @@ angular.module('scapiApp')
 
       sc.tracks($scope.groupId).success(function (data) {
         $scope.tracks = data;
+        $scope.notDuplicates = removeDuplicateUsers(angular.copy(data));
 
       });
 
     }
 
+   function removeDuplicateUsers(trackArray){
+    var arrayLength = trackArray.length;
+    var noRemoved = 0;
+    var trackIx = 0;
+    var seenUsers = [];
+
+     while(trackIx < trackArray.length){
+
+        if(seenUsers.indexOf(trackArray[trackIx].user_id) < 0) {
+          seenUsers.push(trackArray[trackIx].user_id);
+          trackIx++;
+        }else{
+          trackArray.splice(trackIx, 1);
+          noRemoved++;
+        }
+     }
+
+     console.log('Duplicates Removed: ' +  noRemoved + "/" + arrayLength);
+     return trackArray;
+    }
 
   }]);
