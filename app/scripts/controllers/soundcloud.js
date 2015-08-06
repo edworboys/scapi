@@ -11,18 +11,40 @@ angular.module('scapiApp')
   .controller('SoundcloudCtrl', ['$scope', 'sc', function ($scope, sc, groupTracks) {
 
     $scope.groupId = 49;
+    $scope.groupLink = "http://soundcloud.com/groups/techno";
 
     $scope.getGroup = function() {
       sc.group($scope.groupId).success(function (data) {
         $scope.groupInfo = data;
+        $scope.groupLink = 'http://soundcloud.com/groups/' + $scope.groupInfo.permalink;
       });
 
       sc.tracks($scope.groupId).success(function (data) {
         $scope.tracks = data;
-        $scope.notDuplicates = removeDuplicateUsers(angular.copy(data));
 
       });
 
+    }
+
+    $scope.getGroupFromLink = function() {
+
+      sc.groupFromLink($scope.groupLink).success(function (data) {
+        $scope.groupInfo = data;
+        $scope.groupId = $scope.groupInfo.id;
+      });
+
+      sc.tracksFromLink($scope.groupLink).success(function (data) {
+        $scope.tracks = data;
+
+      });
+
+
+
+
+    }
+
+    $scope.removeDuplicates = function(){
+      $scope.tracks = removeDuplicateUsers($scope.tracks);
     }
 
    function removeDuplicateUsers(trackArray){

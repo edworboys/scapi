@@ -3,15 +3,18 @@
 
   <input type="text" ng-model="groupId"/>
   <button class="btn btn-success" ng-click="getGroup()">Get the group!</button>
+  <button class="btn btn-warning" ng-click="removeDuplicates()">Remove Duplicates</button>
+  <br>
+  <br>
+
+  <input type="text" ng-model="groupLink"/>
+  <button class="btn btn-success" ng-click="getGroupFromLink()">Get the group!</button>
 
   <h2>All Tracks ({{tracks.length}})</h2>
   <ul>
     <li ng-repeat="track in tracks">{{track.user_id}}</li>
   </ul>
-<h2>Not Duplicates ({{notDuplicates.length}})</h2>
-  <ul>
-    <li ng-repeat=" unique in notDuplicates">{{ unique.user_id}}</li>
-  </ul>
+<
 
 
 </div>
