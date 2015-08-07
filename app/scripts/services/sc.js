@@ -29,10 +29,10 @@ angular.module('scapiApp')
       tracksFromLink:  function (groupLink) {
         var resolvedLink = 'http://api.soundcloud.com/resolve?url=' + groupLink + "/tracks" + clientIdParamAnd;
         return $http.get(resolvedLink);
-      }//,
-      /*login: function () {
-        return $
-      }*/
+      },
+      userFollowers: function(userId) {
+        return $http.get('http://api.soundcloud.com/users/' + userId + '/followings' + clientIdParam);
+      }
     };
   }]);
 
