@@ -41,7 +41,7 @@
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li><a ng-href="#/">Followers</a></li>
             </ul>
           </div>
         </div>
@@ -94,7 +94,19 @@
         <script src="scripts/services/groupTracks.js"></script>
         <!-- endbuild -->
 
+
+
     <script src="//connect.soundcloud.com/sdk-2.0.0.js"></script>
+    <script>
+      // initialize client with app credentials
+      SC.initialize({
+        client_id: 'ed3fb73ea5aafe15e1d9e013e93f7d05',
+        redirect_uri: 'http://ed.audiu.net:9000/callback.html'
+      });
+
+      // initiate auth popup
+
+    </script>
 
 </body>
 </html>

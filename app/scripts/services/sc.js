@@ -19,8 +19,8 @@ angular.module('scapiApp')
       tracks: function(groupId) {
         return $http.get('http://api.soundcloud.com/groups/' + groupId + "/tracks" + clientIdParam + "&limit=200" );
       },
-      user: function (userId) {
-        return $http.get('http://api.soundcloud.com/users/' + userId + clientIdParam);
+      me: function () {
+        return $http.get('http://api.soundcloud.com/me/' + clientIdParam + '&oauth_token=' + SC.accessToken());
       },
       groupFromLink:  function (groupLink) {
         var resolvedLink = 'http://api.soundcloud.com/resolve?url=' + groupLink + clientIdParamAnd;
@@ -29,7 +29,10 @@ angular.module('scapiApp')
       tracksFromLink:  function (groupLink) {
         var resolvedLink = 'http://api.soundcloud.com/resolve?url=' + groupLink + "/tracks" + clientIdParamAnd;
         return $http.get(resolvedLink);
-      }
+      }//,
+      /*login: function () {
+        return $
+      }*/
     };
-  }])
+  }]);
 

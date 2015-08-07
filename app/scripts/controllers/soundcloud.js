@@ -8,7 +8,24 @@
  * Controller of the scapiApp
  */
 angular.module('scapiApp')
-  .controller('SoundcloudCtrl', ['$scope', 'sc', function ($scope, sc, groupTracks) {
+  .controller('SoundcloudCtrl', ['$scope', 'sc', function ($scope, sc) {
+
+    function removeDuplicateUsers(trackArray){
+      var arrayLength = trackArray.length;
+      var noRemoved = 0;
+      var trackIx = 0;
+      var seenUsers = [];
+
+      while(trackIx < trackArray.length){
+
+        if(seenUsers.indexOf(trackArray[trackIx].user_id) < 0) {
+          seenUsers.push(trackArray[trackIx].user_id);
+          trackIx++;
+        }else{
+          trackArray.splice(trackIx, 1);
+          noRemoved++;
+        }
+      }
 
     $scope.groupId = 49;
     $scope.groupLink = "http://soundcloud.com/groups/techno";
@@ -24,7 +41,7 @@ angular.module('scapiApp')
 
       });
 
-    }
+    };
 
     $scope.getGroupFromLink = function() {
 
@@ -37,32 +54,18 @@ angular.module('scapiApp')
         $scope.tracks = data;
 
       });
+    };
 
 
 
-
-    }
 
     $scope.removeDuplicates = function(){
       $scope.tracks = removeDuplicateUsers($scope.tracks);
-    }
+    };
 
-   function removeDuplicateUsers(trackArray){
-    var arrayLength = trackArray.length;
-    var noRemoved = 0;
-    var trackIx = 0;
-    var seenUsers = [];
 
-     while(trackIx < trackArray.length){
 
-        if(seenUsers.indexOf(trackArray[trackIx].user_id) < 0) {
-          seenUsers.push(trackArray[trackIx].user_id);
-          trackIx++;
-        }else{
-          trackArray.splice(trackIx, 1);
-          noRemoved++;
-        }
-     }
+
 
      console.log('Duplicates Removed: ' +  noRemoved + "/" + arrayLength);
      return trackArray;

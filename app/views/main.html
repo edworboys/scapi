@@ -1,23 +1,29 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div ng-controller="MainCtrl">
+  <div class="jumbotron">
+    <h2>Ed's First Angular Project</h2>
+    <p class="lead">
+      <img src="http://www.treehousetriberecords.com/wp-content/uploads/2015/05/logo-soundcloud.jpg " alt="I'm Yeoman"><br>
+      Soundcloud API Learning
+    </p>
+    <p><button ng-click="scConnect()">Connect with Soundcloud<span class="glyphicon glyphicon-ok"></span></button></p>
+    <p><button ng-click="amILoggedIn()">Am I Logged In? <span class="glyphicon glyphicon-ok"></span></button></p>
+  </div>
+
+  <div class="row marketing">
+    <h4>Hello</h4>
+    <p>
+      HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
+    </p>
+
+    <h4>Angular</h4>
+    <p>
+      AngularJS is a toolset for building the framework most suited to your application development.
+    </p>
+
+    <h4>Karma</h4>
+    <p>Spectacular Test Runner for JavaScript.</p>
+  </div>
 </div>
 
-<div class="row marketing">
-  <h4>Hello</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
