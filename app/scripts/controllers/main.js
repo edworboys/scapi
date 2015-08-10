@@ -13,15 +13,22 @@ angular.module('scapiApp')
     $scope.scConnect = function() {
       SC.connect(function () {
 
-        sc.me().success(function (data) {
-          $scope.me = data;
+        sc.me().then(function (response) {
+          $scope.me = response.data;
           console.log($scope.me);
 
-          sc.userFollowers($scope.me.id).success(function (data) {
-            $scope.followers = data;
+          sc.userFollowers($scope.me.id).then(function (response) {
+            $scope.followers = response.data;
+
+          },
+            function(rejection){
+
+            });
+
+        },
+          function(rejection){
 
           });
-        });
       });
     };
 
