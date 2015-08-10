@@ -49,6 +49,10 @@ angular.module('scapiApp')
       userFollowers: function(userId) {
         console.log($http.get('http://api.soundcloud.com/users/' + userId + '/followers' + clientIdParam + "&limit=50" + "&linked_partitioning=1"));
         return $http.get('http://api.soundcloud.com/users/' + userId + '/followers' + clientIdParam + "&limit=50" + "&linked_partitioning=1");
+      },
+
+      getNextPage: function(next_href){
+        return $http.get(next_href);
       }
     };
 

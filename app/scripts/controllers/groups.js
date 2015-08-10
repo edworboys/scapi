@@ -35,32 +35,42 @@ angular.module('scapiApp')
     $scope.groupLink = "http://soundcloud.com/groups/techno";
 
     $scope.getGroup = function() {
-      sc.group($scope.groupId).success(function (data) {
-        $scope.groupInfo = data;
+      sc.group($scope.groupId).then(function (resolved) {
+        $scope.groupInfo = resolved;
         $scope.groupLink = 'http://soundcloud.com/groups/' + $scope.groupInfo.permalink;
-      });
+      },
+        function (rejected) {
 
-      sc.tracks($scope.groupId).success(function (data) {
+        });
+
+      sc.tracks($scope.groupId).then(function (data) {
         $scope.tracks = data;
         $scope.tracks = removeDuplicateUsers($scope.tracks);
+      },
+        function (rejected) {
 
-      });
+
+        });
 
     };
 
     $scope.getGroupFromLink = function() {
 
-      sc.groupFromLink($scope.groupLink).success(function (data) {
+      sc.groupFromLink($scope.groupLink).then(function (data) {
         $scope.groupInfo = data;
         $scope.groupId = $scope.groupInfo.id;
-      });
+      },
+        function (rejected) {
 
-      sc.tracksFromLink($scope.groupLink).then(function (data) {
-        $scope.tracks = data;
+        });
+
+
+      sc.tracksFromLink($scope.groupLink).then(function (resolved) {
+        $scope.tracks = resolved;
         $scope.tracks = removeDuplicateUsers($scope.tracks);
 
       }, function (rejected) {
-        console.log('it went totally wrong: ' + rejected);
+
       });
 
     };
