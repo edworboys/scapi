@@ -42,6 +42,7 @@ angular.module('scapiApp')
 
       sc.tracks($scope.groupId).success(function (data) {
         $scope.tracks = data;
+        $scope.tracks = removeDuplicateUsers($scope.tracks);
 
       });
 
@@ -54,10 +55,14 @@ angular.module('scapiApp')
         $scope.groupId = $scope.groupInfo.id;
       });
 
-      sc.tracksFromLink($scope.groupLink).success(function (data) {
+      sc.tracksFromLink($scope.groupLink).then(function (data) {
         $scope.tracks = data;
+        $scope.tracks = removeDuplicateUsers($scope.tracks);
 
+      }, function (rejected) {
+        console.log('it went totally wrong: ' + rejected);
       });
+
     };
 
 

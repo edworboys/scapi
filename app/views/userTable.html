@@ -1,14 +1,14 @@
 
 <table class="table">
-
+  <h2>Total Users = {{ users.collection.length }}</h2>
   <tr>
-    <td>Username</td>
-    <td>Followers</td>
-    <td>Tracks</td>
+    <td><strong>Username</strong></td>
+    <td><strong>Followers</strong></td>
+    <td><strong>Tracks</strong></td>
   </tr>
 
 
-  <tr ng-repeat="user in users">
+  <tr ng-repeat="user in users.collection">
     <td>{{user.username}}</td>
     <td>{{user.followers_count}}</td>
     <td>{{user.track_count}}</td>

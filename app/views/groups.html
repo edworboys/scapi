@@ -10,9 +10,9 @@
   <input type="text" ng-model="groupLink"/>
   <button class="btn btn-success" ng-click="getGroupFromLink()">Get the group!</button>
 
-  <h2>All Tracks ({{tracks.length}})</h2>
+  <h2>Unique Users in Group ({{tracks.length}})</h2>
   <ul>
-    <li ng-repeat="track in tracks">{{track.user_id}}</li>
+    <li ng-repeat="track in tracks">{{track.user}}</li>
   </ul>
 
 

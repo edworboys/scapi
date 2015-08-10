@@ -19,15 +19,9 @@ angular.module('scapiApp')
           sc.userFollowers($scope.me.id).success(function (data) {
             $scope.followers = data;
             console.log($scope.followers);
-          });
+          }); 
         });
-
-
-
-
       });
-
-
     };
 
     $scope.amILoggedIn = function () {
