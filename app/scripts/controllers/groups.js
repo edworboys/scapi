@@ -8,24 +8,28 @@
  * Controller of the scapiApp
  */
 angular.module('scapiApp')
-  .controller('SoundcloudCtrl', ['$scope', 'sc', function ($scope, sc) {
+  .controller('GroupsCtrl', ['$scope', 'sc', function ($scope, sc) {
 
-    function removeDuplicateUsers(trackArray){
+    function removeDuplicateUsers(trackArray) {
       var arrayLength = trackArray.length;
       var noRemoved = 0;
       var trackIx = 0;
       var seenUsers = [];
 
-      while(trackIx < trackArray.length){
+      while (trackIx < trackArray.length) {
 
-        if(seenUsers.indexOf(trackArray[trackIx].user_id) < 0) {
+        if (seenUsers.indexOf(trackArray[trackIx].user_id) < 0) {
           seenUsers.push(trackArray[trackIx].user_id);
           trackIx++;
-        }else{
+        } else {
           trackArray.splice(trackIx, 1);
           noRemoved++;
         }
       }
+
+      console.log('Duplicates Removed: ' +  noRemoved + "/" + arrayLength);
+      return trackArray;
+    }
 
     $scope.groupId = 49;
     $scope.groupLink = "http://soundcloud.com/groups/techno";
@@ -67,8 +71,7 @@ angular.module('scapiApp')
 
 
 
-     console.log('Duplicates Removed: ' +  noRemoved + "/" + arrayLength);
-     return trackArray;
-    }
+
+
 
   }]);
