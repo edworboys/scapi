@@ -1,12 +1,21 @@
 <div>
-    <h3>Group Name:  {{ groupInfo.name }} </h3>
-    <h4>Group URL: {{'http://soundcloud.com/groups/' + groupInfo.permalink}}</h4>
 
-
-    <input type="text" ng-model="groupLink"/>
+    <input type="text" placeholder="Enter group ID or URL" ng-model="groupLink"/>
     <button class="btn btn-success" ng-click="getGroup()">Get the group!</button>
 
-    <h2>Unique Users in Group ({{tracks.length}})</h2>
+    <table class="table">
+        <th>Name</th>
+        <th>URL</th>
+        <th>Unique Users</th>
+        <th>Follow Users</th>
+        <tr>
+            <td>{{ groupInfo.name }}</td>
+            <td>{{ 'http://soundcloud.com/groups/' + groupInfo.permalink }}</td>
+            <td>{{ tracks.length }}</td>
+            <td><button class="btn btn-primary">Follow Users</button></td>
+        </tr>
+    </table>
+
 
     <ul>
         <li ng-repeat="track in tracks">{{track.user}}</li>

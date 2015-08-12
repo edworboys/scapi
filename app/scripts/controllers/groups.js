@@ -36,9 +36,6 @@ angular.module('scapiApp')
         $scope.getGroup = function() {          // IS A NUMBER (ID)
 
             if (!isNaN($scope.groupLink)){
-                console.log('IF');
-                console.log($scope.groupLink);
-                console.log(typeof($scope.groupLink));
                 sc.group($scope.groupLink).then(function (response) {
                     $scope.groupInfo = response.data;
                 }, function (rejected) {
@@ -48,11 +45,11 @@ angular.module('scapiApp')
                 sc.tracks($scope.groupLink).then(function (response) {
                     $scope.tracks = response.data;
                     $scope.tracks = removeDuplicateUsers($scope.tracks);
+                    $scope.showUrl = 1;
                 }, function (rejected) {
 
                 });
             } else {                            // IS A STRING (URL)
-                console.log('ELSE');
 
                 sc.groupFromLink($scope.groupLink).then(function (response) {
                         $scope.groupInfo = response.data;
@@ -65,15 +62,16 @@ angular.module('scapiApp')
                     sc.tracksFromLink($scope.groupLink).then(function (response) {
                         $scope.tracks = response.data;
                         $scope.tracks = removeDuplicateUsers($scope.tracks);
-
+                        $scope.showUrl = 1;
                     }, function (rejected) {
                         console.log(rejected);
                     });
-
-
-
             }
 
+        };
+
+        $scope.followUsers = function() {
+            console.log(sc.me);
         };
 
 

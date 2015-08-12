@@ -28,7 +28,11 @@ angular
         templateUrl: 'views/groups.html',
         controller: 'GroupsCtrl',
         controllerAs: 'groups'
-      })
+      }).when('/followers', {
+        templateUrl: 'views/followers.html',
+        controller: 'FollowersCtrl',
+        controllerAs: 'followers'
+        })
       .otherwise({
         redirectTo: '/'
       });
